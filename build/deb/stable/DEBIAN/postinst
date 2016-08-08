@@ -1,0 +1,47 @@
+#!/bin/sh
+
+# if no Java yet, exit
+
+if ! java -version
+then
+    echo "No Java installed yet. Pleasy try again after Java has been installed (automatically because of dependencies)"
+    exit 1
+fi
+
+# start solr install script to install solr as daemon
+if /opt/install_solr_service.sh /opt/solr-*.tgz -f
+then
+
+    # Solr installation seems ok
+    # so we overwrite some config files to our custom config files
+
+    echo "Overwriting standard Solr configs with custom configs"
+
+    echo "Setting host to localhost only, so you can access this Solr and the text of all data only from this machine"
+    mv /etc/solr/jetty-http.xml /opt/solr/server/etc/
+
+    echo "Dynamic memory settings"
+    mv /etc/solr/solr.in.sh /etc/default/solr.in.sh
+
+    echo "Setting logfiles to off"
+    mv /etc/solr/log4j.properties /var/solr/
+
+    echo "Setting rights for Ontology manager to write additional schema fields"
+    chgrp -R www-data /var/solr/data/core1/conf/named_entities
+    chmod -R g+w /var/solr/data/core1/conf/named_entities
+    chmod o+x /var/solr
+    chmod o+x /var/solr/data
+    chmod o+x /var/solr/data/core1
+    chmod o+x /var/solr/data/core1/conf
+
+    echo "Removing Solr installation script and archive"
+    rm /opt/solr-*.tgz
+    rm /opt/install_solr_service.sh
+
+    echo "Restarting Solr to activate the new configfiles"
+    service solr restart
+
+else
+    # If Solr install script ends with error, we do, too
+    exit 1
+fi
