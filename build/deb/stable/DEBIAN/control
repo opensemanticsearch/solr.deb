@@ -1,9 +1,9 @@
 Package: solr
-Version: 6.5.1.17.05.29
+Version: 6.5.1.17.06.19
 Section: misc
 Priority: optional
 Architecture: all
-Depends: openjdk-8-jre-headless
+Depends: default-jre-headless
 Installed-Size: 100
 Maintainer: Markus Mandalka <debian@mandalka.name>
 Homepage: http://www.opensemanticsearch.org/
