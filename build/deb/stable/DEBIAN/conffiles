@@ -1,1 +1,2 @@
 /var/solr/data/core1/conf/named_entities/schema_named_entities.xml
+/var/solr/data/core1/conf/named_entities/synonyms.txt
