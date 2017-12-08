@@ -259,6 +259,23 @@
         <filter class="solr.SnowballPorterFilterFactory" language="Dutch"/>
       </analyzer>
     </fieldType>
+
+    <!-- Spanish -->
+<field name="text_txt_es" type="text_es" indexed="true" stored="false" multiValued="true"/>
+<field name="content_txt_es" type="synonyms_es" indexed="false" stored="true" multiValued="true"/>
+<field name="synonyms_es" type="synonyms_es" indexed="true" stored="false" multiValued="true"/>
+<copyField source="*_txt_es" dest="text_txt_es"/>
+<copyField source="*_txt_es" dest="synonyms_es"/>
+    <fieldType name="synonyms_es" class="solr.TextField" positionIncrementGap="100">
+      <analyzer> 
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.SynonymFilterFactory" synonyms="named_entities/synonyms.txt" ignoreCase="true" expand="true"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_es.txt" format="snowball" />
+        <filter class="solr.SpanishLightStemFilterFactory"/>
+        <!-- more aggressive: <filter class="solr.SnowballPorterFilterFactory" language="Spanish"/> -->
+      </analyzer>
+    </fieldType>
     
 
     <!-- Import named entities fields from config generated from ontologies and lists -->
