@@ -277,6 +277,38 @@
       </analyzer>
     </fieldType>
     
+    <!-- Italian -->
+<field name="text_txt_it" type="text_es" indexed="true" stored="false" multiValued="true"/>
+<field name="content_txt_it" type="synonyms_it" indexed="false" stored="true" multiValued="true"/>
+<field name="synonyms_it" type="synonyms_it" indexed="true" stored="false" multiValued="true"/>
+<copyField source="*_txt_it" dest="text_txt_it"/>
+<copyField source="*_txt_it" dest="synonyms_it"/>
+  <fieldType name="synonyms_it" class="solr.TextField" positionIncrementGap="100">
+      <analyzer> 
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.SynonymFilterFactory" synonyms="named_entities/synonyms.txt" ignoreCase="true" expand="true"/>
+        <!-- removes l', etc -->
+        <filter class="solr.ElisionFilterFactory" ignoreCase="true" articles="lang/contractions_it.txt"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_it.txt" format="snowball" />
+        <filter class="solr.ItalianLightStemFilterFactory"/>
+        <!-- more aggressive: <filter class="solr.SnowballPorterFilterFactory" language="Italian"/> -->
+      </analyzer>
+    </fieldType>
+
+    <!-- Czech -->
+<field name="text_txt_cz" type="text_cz" indexed="true" stored="false" multiValued="true"/>
+<field name="content_txt_cz" type="synonyms_cz" indexed="false" stored="true" multiValued="true"/>
+<field name="synonyms_cz" type="synonyms_cz" indexed="true" stored="false" multiValued="true"/>
+    <fieldType name="synonyms_cz" class="solr.TextField" positionIncrementGap="100">
+      <analyzer> 
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.SynonymFilterFactory" synonyms="named_entities/synonyms.txt" ignoreCase="true" expand="true"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_cz.txt" />
+        <filter class="solr.CzechStemFilterFactory"/>       
+      </analyzer>
+    </fieldType>
 
     <!-- Import named entities fields from config generated from ontologies and lists -->
     &named_entities;
