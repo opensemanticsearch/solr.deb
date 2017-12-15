@@ -310,6 +310,54 @@
       </analyzer>
     </fieldType>
 
+    <!-- Romanian -->
+<field name="text_txt_ro" type="text_ro" indexed="true" stored="false" multiValued="true"/>
+<field name="content_txt_ro" type="synonyms_ro" indexed="false" stored="true" multiValued="true"/>
+<field name="synonyms_ro" type="synonyms_ro" indexed="true" stored="false" multiValued="true"/>
+    <fieldType name="synonyms_ro" class="solr.TextField" positionIncrementGap="100">
+      <analyzer>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.SynonymFilterFactory" synonyms="named_entities/synonyms.txt" ignoreCase="true" expand="true"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_ro.txt" />
+        <filter class="solr.SnowballPorterFilterFactory" language="Romanian"/>
+      </analyzer>
+    </fieldType>
+
+    <!-- Arabic -->
+<field name="text_txt_ar" type="text_ar" indexed="true" stored="false" multiValued="true"/>
+<field name="content_txt_ar" type="synonyms_ar" indexed="false" stored="true" multiValued="true"/>
+<field name="synonyms_ar" type="synonyms_ar" indexed="true" stored="false" multiValued="true"/>
+    <fieldType name="synonyms_ar" class="solr.TextField" positionIncrementGap="100">
+      <analyzer> 
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.SynonymFilterFactory" synonyms="named_entities/synonyms.txt" ignoreCase="true" expand="true"/>
+        <!-- for any non-arabic -->
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_ar.txt" />
+        <!-- normalizes ﻯ to ﻱ, etc -->
+        <filter class="solr.ArabicNormalizationFilterFactory"/>
+        <filter class="solr.ArabicStemFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <!-- Persian -->
+<field name="text_txt_fa" type="text_fa" indexed="true" stored="false" multiValued="true"/>
+<field name="content_txt_fa" type="synonyms_fa" indexed="false" stored="true" multiValued="true"/>
+<field name="synonyms_fa" type="synonyms_fa" indexed="true" stored="false" multiValued="true"/>
+    <fieldType name="synonyms_fa" class="solr.TextField" positionIncrementGap="100">
+      <analyzer>
+        <!-- for ZWNJ -->
+        <charFilter class="solr.PersianCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.SynonymFilterFactory" synonyms="named_entities/synonyms.txt" ignoreCase="true" expand="true"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ArabicNormalizationFilterFactory"/>
+        <filter class="solr.PersianNormalizationFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_fa.txt" />
+      </analyzer>
+    </fieldType>
+
     <!-- Import named entities fields from config generated from ontologies and lists -->
     &named_entities;
 
