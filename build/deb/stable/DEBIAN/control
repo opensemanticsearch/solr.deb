@@ -1,11 +1,11 @@
 Package: solr
-Version: 6.5.1.17.06.19
+Version: 6.6.3.18.04.15
 Section: misc
 Priority: optional
 Architecture: all
 Depends: default-jre-headless
 Installed-Size: 100
 Maintainer: Markus Mandalka <debian@mandalka.name>
-Homepage: http://www.opensemanticsearch.org/
+Homepage: http://opensemanticsearch.org/
 Description: Preconfigurated Solr
  starting as a daemon

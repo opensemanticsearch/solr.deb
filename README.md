@@ -4,4 +4,4 @@ Apache Solr as Debian package and Ubuntu package preconfigured for & integrated 
 http://www.opensemanticsearch.org/solr
 
 # Dependencies
-Add solr-6.5.1.tgz archive from http://lucene.apache.org/solr to the directory opt
+Add solr-6.6.3.tgz archive from http://lucene.apache.org/solr to the directory opt
