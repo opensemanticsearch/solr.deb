@@ -1,0 +1,1 @@
+# Do not edit synonyms in this config file. It will be overwritten by Ontologies Manager UI.
