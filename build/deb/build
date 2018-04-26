@@ -16,7 +16,7 @@ mkdir ${BUILDDIR}
 cp -a ${BASEDIR}/build/deb/${DEBIAN_VERSION}/* ${BUILDDIR}/
 cp -a ${BASEDIR}/etc ${BUILDDIR}/
 cp -a ${BASEDIR}/var ${BUILDDIR}/
-cp -a ${BASEDIR}/opt ${BUILDDIR}/
+cp -a ${BASEDIR}/usr ${BUILDDIR}/
 
 # Build deb
 dpkg -b ${BUILDDIR} ${PACKAGE}

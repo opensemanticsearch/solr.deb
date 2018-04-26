@@ -8,8 +8,21 @@ then
     exit 1
 fi
 
-# start solr install script to install solr as daemon
-if /opt/install_solr_service.sh /opt/solr-*.tgz -f
+# create tempdir for extraction of the Solr installer
+TEMPDIR="/tmp/solr_installation_$$"
+mkdir ${TEMPDIR}
+
+SOLR_ARCHIVE=/usr/src/solr-*.tgz
+
+# The archived files are in a versioned path like solr-7.3.0
+# infer this path from the archive filename which is like /downloadpath/solr-7.3.0.tgz by filename without path by basename with parameter for strip the .tgz suffix
+SOLR_ARCHIVED_DIRNAME=`basename ${SOLR_ARCHIVE} .tgz`
+
+# extract only the installer (which uses the archive for installation)
+tar -xzf ${SOLR_ARCHIVE} --directory ${TEMPDIR} ${SOLR_ARCHIVED_DIRNAME}/bin/install_solr_service.sh --directory ${TEMPDIR}
+
+# start extracted Solr installer to install Solr as daemon
+if ${TEMPDIR}/${SOLR_ARCHIVED_DIRNAME}/bin/install_solr_service.sh ${SOLR_ARCHIVE} -f
 then
 
     # Solr installation seems ok
@@ -18,25 +31,22 @@ then
     echo "Overwriting standard Solr configs with custom configs"
 
     echo "Setting host to localhost only, so you can access this Solr and the text of all data only from this machine"
-    mv /etc/solr/jetty-http.xml /opt/solr/server/etc/
+    #mv /etc/solr/jetty-http.xml /opt/solr/server/etc/
 
-    echo "Dynamic memory settings"
-    mv /etc/solr/solr.in.sh /etc/default/solr.in.sh
-
-    echo "Setting logfiles to off"
-    mv /etc/solr/log4j.properties /var/solr/
-
-    echo "Setting rights for Ontology manager to write additional schema fields"
-    chgrp -R www-data /var/solr/data/core1/conf/named_entities
-    chmod -R g+w /var/solr/data/core1/conf/named_entities
+    echo "Setting rights for synonyms"
+    chgrp www-data /var/solr/data/opensemanticsearch/conf/synonyms.txt
+    chmod g+w /var/solr/data/opensemanticsearch/conf/synonyms.txt
     chmod o+x /var/solr
     chmod o+x /var/solr/data
-    chmod o+x /var/solr/data/core1
-    chmod o+x /var/solr/data/core1/conf
+    chmod o+x /var/solr/data/opensemanticsearch
+    chmod o+x /var/solr/data/opensemanticsearch/conf
 
     echo "Removing Solr installation script and archive"
-    rm /opt/solr-*.tgz
-    rm /opt/install_solr_service.sh
+    rm /usr/src/${SOLR_ARCHIVED_DIRNAME}.tgz
+    rm ${TEMPDIR}/${SOLR_ARCHIVED_DIRNAME}/bin/install_solr_service.sh
+    rmdir ${TEMPDIR}/${SOLR_ARCHIVED_DIRNAME}/bin
+    rmdir ${TEMPDIR}/${SOLR_ARCHIVED_DIRNAME}
+    rmdir ${TEMPDIR}
 
     echo "Restarting Solr to activate the new configfiles"
     service solr restart
