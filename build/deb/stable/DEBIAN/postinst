@@ -31,11 +31,11 @@ then
     echo "Overwriting standard Solr configs with custom configs"
 
     echo "Setting host to localhost only, so you can access this Solr and the text of all data only from this machine"
-    #mv /etc/solr/jetty-http.xml /opt/solr/server/etc/
+    mv /etc/solr/jetty-http.xml /opt/solr/server/etc/
 
     echo "Setting rights for synonyms"
-    chgrp www-data /var/solr/data/opensemanticsearch/conf/synonyms.txt
-    chmod g+w /var/solr/data/opensemanticsearch/conf/synonyms.txt
+    chgrp www-data /var/solr/data/opensemanticsearch/conf/synonyms_skos.txt
+    chmod g+w /var/solr/data/opensemanticsearch/conf/synonyms_skos.txt
     chmod o+x /var/solr
     chmod o+x /var/solr/data
     chmod o+x /var/solr/data/opensemanticsearch

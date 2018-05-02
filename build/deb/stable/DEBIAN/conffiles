@@ -1,1 +1,3 @@
 /var/solr/data/opensemanticsearch/conf/synonyms.txt
+/var/solr/data/opensemanticsearch/conf/_rest_managed.json
+/var/solr/data/opensemanticsearch/conf/_schema_analysis_synonyms_skos.json

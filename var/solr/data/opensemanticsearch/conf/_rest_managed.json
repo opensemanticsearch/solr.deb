@@ -1,0 +1,7 @@
+{
+  "initArgs":{},
+  "initializedOn":"2018-04-28T10:38:33.440Z",
+  "managedList":[{
+      "resourceId":"/schema/analysis/synonyms/skos",
+      "numObservers":"0",
+      "class":"org.apache.solr.rest.schema.analysis.ManagedSynonymGraphFilterFactory$SynonymManager"}]}
