@@ -227,6 +227,33 @@
     </fieldType>
 
 
+    <!-- Hungarian -->
+<field name="text_txt_hu" type="text_hu" indexed="true" stored="false" multiValued="true"/>
+<field name="content_txt_hu" type="synonyms_hu" indexed="false" stored="true" multiValued="true"/>
+<field name="synonyms_hu" type="synonyms_hu" indexed="true" stored="false" multiValued="true"/>
+<copyField source="*_txt_hu" dest="text_txt_hu"/>
+<copyField source="*_txt_hu" dest="synonyms_hu"/>
+
+    <dynamicField name="*_txt_hu" type="text_hu"  indexed="true"  stored="true"/>
+    <fieldType name="text_hu" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index"> 
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_hu.txt" format="snowball" />
+        <filter class="solr.SnowballPorterFilterFactory" language="Hungarian"/>
+        <!-- less aggressive: <filter class="solr.HungarianLightStemFilterFactory"/> -->   
+      </analyzer>
+     <analyzer type="query"> 
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+	<filter class="solr.ManagedSynonymGraphFilterFactory" managed="skos" />
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_hu.txt" format="snowball" />
+        <filter class="solr.SnowballPorterFilterFactory" language="Hungarian"/>
+        <!-- less aggressive: <filter class="solr.HungarianLightStemFilterFactory"/> -->   
+      </analyzer>
+
+    </fieldType>
+
 
     <!-- French -->
 <field name="text_txt_fr" type="text_fr" indexed="true" stored="false" multiValued="true"/>
