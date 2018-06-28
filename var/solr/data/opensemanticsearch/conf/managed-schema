@@ -234,8 +234,7 @@
 <copyField source="*_txt_hu" dest="text_txt_hu"/>
 <copyField source="*_txt_hu" dest="synonyms_hu"/>
 
-    <dynamicField name="*_txt_hu" type="text_hu"  indexed="true"  stored="true"/>
-    <fieldType name="text_hu" class="solr.TextField" positionIncrementGap="100">
+    <fieldType name="synonyms_hu" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index"> 
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.LowerCaseFilterFactory"/>
