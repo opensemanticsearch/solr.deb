@@ -257,9 +257,8 @@
 <field name="text_txt_hunspell_hu" type="text_hunspell_hu" indexed="true" stored="false" multiValued="true"/>
 <field name="content_txt_hunspell_hu" type="synonyms_hunspell_hu" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_hunspell_hu" type="synonyms_hunspell_hu" indexed="true" stored="false" multiValued="true"/>
-<copyField source="*_txt_hu" dest="text_hunspell_txt_hu"/>
-<copyField source="*_txt_hu" dest="synonyms_hunspell_hu"/>
-<copyField source="content_txt_hu" dest="content_txt_hunspell_hu"/>
+<copyField source="*_txt_hunspell_hu" dest="text_txt_hunspell_hu"/>
+<copyField source="*_txt_hunspell_hu" dest="synonyms_hunspell_hu"/>
 
     <dynamicField name="*_txt_hunspell_hu" type="text_hunspell_hu"  indexed="true"  stored="true"/>
     <fieldType name="text_hunspell_hu" class="solr.TextField" positionIncrementGap="100">
