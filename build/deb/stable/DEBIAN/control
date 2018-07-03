@@ -1,9 +1,9 @@
 Package: solr
-Version: 7.4.0.18.06.28
+Version: 7.3.1.18.07.03
 Section: misc
 Priority: optional
 Architecture: all
-Depends: default-jre-headless
+Depends: default-jre-headless,hunspell-de-de-frami,hunspell-hu
 Installed-Size: 100
 Maintainer: Markus Mandalka <debian@mandalka.name>
 Homepage: https://opensemanticsearch.org/
