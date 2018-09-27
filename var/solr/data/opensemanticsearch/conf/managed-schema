@@ -114,7 +114,7 @@
     <!-- docValues are enabled by default for long type so we don't need to index the version field  -->
     <field name="_version_" type="plong" indexed="false" stored="false"/>
     <field name="_root_" type="string" indexed="true" stored="false" docValues="false" />
-    <field name="_text_" type="text_general" indexed="true" stored="false" multiValued="true"/>
+    <field name="_text_" type="text_general" indexed="true" stored="true" multiValued="true"/>
 
     <!-- This can be enabled, in case the client does not know what fields may be searched. It isn't enabled by default
          because it's very expensive to index everything twice. -->
@@ -150,7 +150,7 @@
     <dynamicField name="*_txt_synonyms" type="synonyms" indexed="true" stored="true"/>
 
     <!-- English -->
-<field name="text_txt_en" type="text_en" indexed="true" stored="false" multiValued="true"/>
+<field name="text_txt_en" type="text_en" indexed="true" stored="true" multiValued="true"/>
 <field name="content_txt_en" type="synonyms_en" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_en" type="synonyms_en" indexed="true" stored="false" multiValued="true"/>
 <copyField source="*_txt_en" dest="text_txt_en"/>
@@ -196,7 +196,7 @@
 
 
     <!-- German -->
-<field name="text_txt_de" type="text_de" indexed="true" stored="false" multiValued="true"/>
+<field name="text_txt_de" type="text_de" indexed="true" stored="true" multiValued="true"/>
 <field name="content_txt_de" type="synonyms_de" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_de" type="synonyms_de" indexed="true" stored="false" multiValued="true"/>
 <copyField source="*_txt_de" dest="text_txt_de"/>
@@ -228,7 +228,7 @@
 
 
     <!-- Hungarian -->
-<field name="text_txt_hu" type="text_hu" indexed="true" stored="false" multiValued="true"/>
+<field name="text_txt_hu" type="text_hu" indexed="true" stored="true" multiValued="true"/>
 <field name="content_txt_hu" type="synonyms_hu" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_hu" type="synonyms_hu" indexed="true" stored="false" multiValued="true"/>
 <copyField source="*_txt_hu" dest="text_txt_hu"/>
@@ -254,7 +254,7 @@
     </fieldType>
 
     <!-- Hungarian by hunspell stemmer -->
-<field name="text_txt_hunspell_hu" type="text_hunspell_hu" indexed="true" stored="false" multiValued="true"/>
+<field name="text_txt_hunspell_hu" type="text_hunspell_hu" indexed="true" stored="true" multiValued="true"/>
 <field name="content_txt_hunspell_hu" type="synonyms_hunspell_hu" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_hunspell_hu" type="synonyms_hunspell_hu" indexed="true" stored="false" multiValued="true"/>
 <copyField source="*_txt_hunspell_hu" dest="text_txt_hunspell_hu"/>
@@ -289,7 +289,7 @@
 
 
     <!-- French -->
-<field name="text_txt_fr" type="text_fr" indexed="true" stored="false" multiValued="true"/>
+<field name="text_txt_fr" type="text_fr" indexed="true" stored="true" multiValued="true"/>
 <field name="content_txt_fr" type="synonyms_fr" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_fr" type="synonyms_fr" indexed="true" stored="false" multiValued="true"/>
 <copyField source="*_txt_fr" dest="text_txt_fr"/>
@@ -321,7 +321,7 @@
     
 
 <!-- Dutch -->
-<field name="text_txt_nl" type="text_nl" indexed="true" stored="false" multiValued="true"/>
+<field name="text_txt_nl" type="text_nl" indexed="true" stored="true" multiValued="true"/>
 <field name="content_txt_nl" type="synonyms_nl" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_nl" type="synonyms_nl" indexed="true" stored="false" multiValued="true"/>
 <copyField source="*_txt_nl" dest="text_txt_nl"/>
@@ -346,7 +346,7 @@
     </fieldType>
 
     <!-- Spanish -->
-<field name="text_txt_es" type="text_es" indexed="true" stored="false" multiValued="true"/>
+<field name="text_txt_es" type="text_es" indexed="true" stored="true" multiValued="true"/>
 <field name="content_txt_es" type="synonyms_es" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_es" type="synonyms_es" indexed="true" stored="false" multiValued="true"/>
 <copyField source="*_txt_es" dest="text_txt_es"/>
@@ -370,7 +370,7 @@
     </fieldType>
     
     <!-- Italian -->
-<field name="text_txt_it" type="text_es" indexed="true" stored="false" multiValued="true"/>
+<field name="text_txt_it" type="text_es" indexed="true" stored="true" multiValued="true"/>
 <field name="content_txt_it" type="synonyms_it" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_it" type="synonyms_it" indexed="true" stored="false" multiValued="true"/>
 <copyField source="*_txt_it" dest="text_txt_it"/>
@@ -398,7 +398,7 @@
     </fieldType>
 
     <!-- Czech -->
-<field name="text_txt_cz" type="text_cz" indexed="true" stored="false" multiValued="true"/>
+<field name="text_txt_cz" type="text_cz" indexed="true" stored="true" multiValued="true"/>
 <field name="content_txt_cz" type="synonyms_cz" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_cz" type="synonyms_cz" indexed="true" stored="false" multiValued="true"/>
     <fieldType name="synonyms_cz" class="solr.TextField" positionIncrementGap="100">
@@ -418,7 +418,7 @@
     </fieldType>
 
     <!-- Romanian -->
-<field name="text_txt_ro" type="text_ro" indexed="true" stored="false" multiValued="true"/>
+<field name="text_txt_ro" type="text_ro" indexed="true" stored="true" multiValued="true"/>
 <field name="content_txt_ro" type="synonyms_ro" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_ro" type="synonyms_ro" indexed="true" stored="false" multiValued="true"/>
     <fieldType name="synonyms_ro" class="solr.TextField" positionIncrementGap="100">
@@ -438,7 +438,7 @@
     </fieldType>
 
     <!-- Portuguese -->
-<field name="text_txt_pt" type="text_pt" indexed="true" stored="false" multiValued="true"/>
+<field name="text_txt_pt" type="text_pt" indexed="true" stored="true" multiValued="true"/>
 <field name="content_txt_pt" type="synonyms_pt" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_pt" type="synonyms_pt" indexed="true" stored="false" multiValued="true"/>
   <fieldType name="synonyms_pt" class="solr.TextField" positionIncrementGap="100">
@@ -464,7 +464,7 @@
     </fieldType>
 
     <!-- Arabic -->
-<field name="text_txt_ar" type="text_ar" indexed="true" stored="false" multiValued="true"/>
+<field name="text_txt_ar" type="text_ar" indexed="true" stored="true" multiValued="true"/>
 <field name="content_txt_ar" type="synonyms_ar" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_ar" type="synonyms_ar" indexed="true" stored="false" multiValued="true"/>
     <fieldType name="synonyms_ar" class="solr.TextField" positionIncrementGap="100">
@@ -490,7 +490,7 @@
     </fieldType>
 
     <!-- Persian -->
-<field name="text_txt_fa" type="text_fa" indexed="true" stored="false" multiValued="true"/>
+<field name="text_txt_fa" type="text_fa" indexed="true" stored="true" multiValued="true"/>
 <field name="content_txt_fa" type="synonyms_fa" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_fa" type="synonyms_fa" indexed="true" stored="false" multiValued="true"/>
     <fieldType name="synonyms_fa" class="solr.TextField" positionIncrementGap="100">
