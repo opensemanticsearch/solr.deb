@@ -123,12 +123,9 @@
 
     <!-- Open Semantic Search -->
 
-    <copyField source="*" dest="_text_"/>
-
  <!-- Synonyms (not language specific, if no language specific synonym setup -->
-<field name="content_txt_synonyms" type="synonyms" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms" type="synonyms" indexed="true" stored="false" multiValued="true"/>
-<copyField source="*_txt_synonyms" dest="synonyms"/>
+<copyField source="_text_" dest="synonyms"/>
 
  <fieldType name="synonyms" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index">
@@ -147,14 +144,11 @@
         <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
     </fieldType>
-    <dynamicField name="*_txt_synonyms" type="synonyms" indexed="true" stored="true"/>
 
     <!-- English -->
 <field name="text_txt_en" type="text_en" indexed="true" stored="true" multiValued="true"/>
-<field name="content_txt_en" type="synonyms_en" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_en" type="synonyms_en" indexed="true" stored="false" multiValued="true"/>
-<copyField source="*_txt_en" dest="text_txt_en"/>
-<copyField source="*_txt_en" dest="synonyms_en"/>
+<copyField source="text_txt_en" dest="synonyms_en"/>
 
  <fieldType name="synonyms_en" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index">
@@ -197,10 +191,8 @@
 
     <!-- German -->
 <field name="text_txt_de" type="text_de" indexed="true" stored="true" multiValued="true"/>
-<field name="content_txt_de" type="synonyms_de" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_de" type="synonyms_de" indexed="true" stored="false" multiValued="true"/>
-<copyField source="*_txt_de" dest="text_txt_de"/>
-<copyField source="*_txt_de" dest="synonyms_de"/>
+<copyField source="text_txt_de" dest="synonyms_de"/>
 
     <fieldType name="synonyms_de" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index">
@@ -229,10 +221,8 @@
 
     <!-- Hungarian -->
 <field name="text_txt_hu" type="text_hu" indexed="true" stored="true" multiValued="true"/>
-<field name="content_txt_hu" type="synonyms_hu" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_hu" type="synonyms_hu" indexed="true" stored="false" multiValued="true"/>
-<copyField source="*_txt_hu" dest="text_txt_hu"/>
-<copyField source="*_txt_hu" dest="synonyms_hu"/>
+<copyField source="text_txt_hu" dest="synonyms_hu"/>
 
     <fieldType name="synonyms_hu" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index"> 
@@ -255,10 +245,8 @@
 
     <!-- Hungarian by hunspell stemmer -->
 <field name="text_txt_hunspell_hu" type="text_hunspell_hu" indexed="true" stored="true" multiValued="true"/>
-<field name="content_txt_hunspell_hu" type="synonyms_hunspell_hu" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_hunspell_hu" type="synonyms_hunspell_hu" indexed="true" stored="false" multiValued="true"/>
-<copyField source="*_txt_hunspell_hu" dest="text_txt_hunspell_hu"/>
-<copyField source="*_txt_hunspell_hu" dest="synonyms_hunspell_hu"/>
+<copyField source="text_txt_hunspell_hu" dest="synonyms_hunspell_hu"/>
 
     <dynamicField name="*_txt_hunspell_hu" type="text_hunspell_hu"  indexed="true"  stored="true"/>
     <fieldType name="text_hunspell_hu" class="solr.TextField" positionIncrementGap="100">
@@ -290,10 +278,8 @@
 
     <!-- French -->
 <field name="text_txt_fr" type="text_fr" indexed="true" stored="true" multiValued="true"/>
-<field name="content_txt_fr" type="synonyms_fr" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_fr" type="synonyms_fr" indexed="true" stored="false" multiValued="true"/>
-<copyField source="*_txt_fr" dest="text_txt_fr"/>
-<copyField source="*_txt_fr" dest="synonyms_fr"/>
+<copyField source="text_txt_fr" dest="synonyms_fr"/>
 
     <fieldType name="synonyms_fr" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index"> 
@@ -322,10 +308,8 @@
 
 <!-- Dutch -->
 <field name="text_txt_nl" type="text_nl" indexed="true" stored="true" multiValued="true"/>
-<field name="content_txt_nl" type="synonyms_nl" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_nl" type="synonyms_nl" indexed="true" stored="false" multiValued="true"/>
-<copyField source="*_txt_nl" dest="text_txt_nl"/>
-<copyField source="*_txt_nl" dest="synonyms_nl"/>
+<copyField source="text_txt_nl" dest="synonyms_nl"/>
 
     <fieldType name="synonyms_nl" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index"> 
@@ -347,10 +331,9 @@
 
     <!-- Spanish -->
 <field name="text_txt_es" type="text_es" indexed="true" stored="true" multiValued="true"/>
-<field name="content_txt_es" type="synonyms_es" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_es" type="synonyms_es" indexed="true" stored="false" multiValued="true"/>
-<copyField source="*_txt_es" dest="text_txt_es"/>
-<copyField source="*_txt_es" dest="synonyms_es"/>
+<copyField source="text_txt_es" dest="synonyms_es"/>
+
     <fieldType name="synonyms_es" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index"> 
         <tokenizer class="solr.StandardTokenizerFactory"/>
@@ -371,10 +354,9 @@
     
     <!-- Italian -->
 <field name="text_txt_it" type="text_es" indexed="true" stored="true" multiValued="true"/>
-<field name="content_txt_it" type="synonyms_it" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_it" type="synonyms_it" indexed="true" stored="false" multiValued="true"/>
-<copyField source="*_txt_it" dest="text_txt_it"/>
-<copyField source="*_txt_it" dest="synonyms_it"/>
+<copyField source="text_txt_it" dest="synonyms_it"/>
+
   <fieldType name="synonyms_it" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index"> 
         <tokenizer class="solr.StandardTokenizerFactory"/>
@@ -399,8 +381,9 @@
 
     <!-- Czech -->
 <field name="text_txt_cz" type="text_cz" indexed="true" stored="true" multiValued="true"/>
-<field name="content_txt_cz" type="synonyms_cz" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_cz" type="synonyms_cz" indexed="true" stored="false" multiValued="true"/>
+<copyField source="text_txt_cz" dest="synonyms_cz"/>
+
     <fieldType name="synonyms_cz" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index"> 
         <tokenizer class="solr.StandardTokenizerFactory"/>
@@ -419,8 +402,9 @@
 
     <!-- Romanian -->
 <field name="text_txt_ro" type="text_ro" indexed="true" stored="true" multiValued="true"/>
-<field name="content_txt_ro" type="synonyms_ro" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_ro" type="synonyms_ro" indexed="true" stored="false" multiValued="true"/>
+<copyField source="text_txt_ro" dest="synonyms_ro"/>
+
     <fieldType name="synonyms_ro" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index">
         <tokenizer class="solr.StandardTokenizerFactory"/>
@@ -439,8 +423,9 @@
 
     <!-- Portuguese -->
 <field name="text_txt_pt" type="text_pt" indexed="true" stored="true" multiValued="true"/>
-<field name="content_txt_pt" type="synonyms_pt" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_pt" type="synonyms_pt" indexed="true" stored="false" multiValued="true"/>
+<copyField source="text_txt_pt" dest="synonyms_pt"/>
+
   <fieldType name="synonyms_pt" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index"> 
         <tokenizer class="solr.StandardTokenizerFactory"/>
@@ -465,8 +450,9 @@
 
     <!-- Arabic -->
 <field name="text_txt_ar" type="text_ar" indexed="true" stored="true" multiValued="true"/>
-<field name="content_txt_ar" type="synonyms_ar" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_ar" type="synonyms_ar" indexed="true" stored="false" multiValued="true"/>
+<copyField source="text_txt_ar" dest="synonyms_ar"/>
+
     <fieldType name="synonyms_ar" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index"> 
         <tokenizer class="solr.StandardTokenizerFactory"/>
@@ -491,8 +477,9 @@
 
     <!-- Persian -->
 <field name="text_txt_fa" type="text_fa" indexed="true" stored="true" multiValued="true"/>
-<field name="content_txt_fa" type="synonyms_fa" indexed="false" stored="true" multiValued="true"/>
 <field name="synonyms_fa" type="synonyms_fa" indexed="true" stored="false" multiValued="true"/>
+<copyField source="text_txt_fa" dest="synonyms_fa"/>
+
     <fieldType name="synonyms_fa" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index">
         <!-- for ZWNJ -->
