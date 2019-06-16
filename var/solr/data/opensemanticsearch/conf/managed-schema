@@ -421,6 +421,29 @@
       </analyzer>
     </fieldType>
 
+    <!-- Russian -->
+<field name="text_txt_ru" type="text_ru" indexed="true" stored="true" multiValued="true"/>
+<field name="synonyms_ru" type="synonyms_ru" indexed="true" stored="false" multiValued="true"/>
+<copyField source="text_txt_ru" dest="synonyms_ru"/>
+
+    <fieldType name="synonyms_ru" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_ru.txt" format="snowball" />
+        <filter class="solr.SnowballPorterFilterFactory" language="Russian"/>
+        <!-- less aggressive: <filter class="solr.RussianLightStemFilterFactory"/> -->
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+	<filter class="solr.ManagedSynonymGraphFilterFactory" managed="skos" />
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_ru.txt" format="snowball" />
+        <filter class="solr.SnowballPorterFilterFactory" language="Russian"/>
+        <!-- less aggressive: <filter class="solr.RussianLightStemFilterFactory"/> -->
+      </analyzer>
+    </fieldType>
+    
     <!-- Portuguese -->
 <field name="text_txt_pt" type="text_pt" indexed="true" stored="true" multiValued="true"/>
 <field name="synonyms_pt" type="synonyms_pt" indexed="true" stored="false" multiValued="true"/>
