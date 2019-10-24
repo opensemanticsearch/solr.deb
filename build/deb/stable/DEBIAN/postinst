@@ -21,6 +21,9 @@ SOLR_ARCHIVED_DIRNAME=`basename ${SOLR_ARCHIVE} .tgz`
 # extract only the installer (which uses the archive for installation)
 tar -xzf ${SOLR_ARCHIVE} --directory ${TEMPDIR} ${SOLR_ARCHIVED_DIRNAME}/bin/install_solr_service.sh --directory ${TEMPDIR}
 
+# prevent that call of "service solr status" in Solr installer waits for quitting pager by manual pressing of q
+export SYSTEMD_PAGER=""
+
 # start extracted Solr installer to install Solr as daemon
 if ${TEMPDIR}/${SOLR_ARCHIVED_DIRNAME}/bin/install_solr_service.sh ${SOLR_ARCHIVE} -f
 then
