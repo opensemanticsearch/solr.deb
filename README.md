@@ -4,4 +4,4 @@ Apache Solr as Debian package and Ubuntu package with preconfigured core/schema 
 https://opensemanticsearch.org/solr
 
 # Build
-Call shell script ./build/build
+Call shell script build-deb

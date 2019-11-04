@@ -1,0 +1,22 @@
+#/bin/sh
+
+VERSION=`date +%y.%m.%d`
+PACKAGE=solr.deb_${VERSION}.deb
+BUILDDIR=/tmp/solr-$$.deb
+
+echo "Building ${PACKAGE} in temp directory ${BUILDDIR}"
+
+# if not yet there, download Solr binary release
+if [ ! -f "usr/src/solr-7.7.2.tgz" ]; then
+    echo "Downloading Solr"
+    wget -P usr/src/ https://www-eu.apache.org/dist/lucene/solr/7.7.2/solr-7.7.2.tgz
+fi
+
+mkdir ${BUILDDIR}
+cp -a DEBIAN ${BUILDDIR}/
+cp -a etc ${BUILDDIR}/
+cp -a var ${BUILDDIR}/
+cp -a usr ${BUILDDIR}/
+
+# Build deb
+dpkg -b ${BUILDDIR} ${PACKAGE}
