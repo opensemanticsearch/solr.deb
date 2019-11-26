@@ -5,6 +5,7 @@ USER root
 RUN apt-get update && apt-get install --no-install-recommends --yes hunspell-hu
 
 COPY ./var/solr/data /opt/solr/server/solr/
+COPY ./src/open-semantic-entity-search-api/src/solr /opt/solr/server/solr/
 RUN chown -R solr:solr /opt/solr/server/solr/
 
 USER solr
