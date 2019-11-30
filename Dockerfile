@@ -1,11 +1,11 @@
-FROM solr:7.7.2
+FROM solr
 
 USER root
 
 RUN apt-get update && apt-get install --no-install-recommends --yes hunspell-hu
 
-COPY ./var/solr/data /opt/solr/server/solr/
-COPY ./src/open-semantic-entity-search-api/src/solr /opt/solr/server/solr/
-RUN chown -R solr:solr /opt/solr/server/solr/
+COPY --chown=solr:solr ./var/solr/data/opensemanticsearch /var/solr/data/opensemanticsearch
+
+COPY --chown=solr:solr ./src/open-semantic-entity-search-api/src/solr/opensemanticsearch-entities /var/solr/data/opensemanticsearch-entities
 
 USER solr
