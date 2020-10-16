@@ -7,11 +7,11 @@ BUILDDIR=/tmp/solr-$$.deb
 echo "Building ${PACKAGE} in temp directory ${BUILDDIR}"
 
 # if not yet there, download Solr binary release
-if [ ! -f "usr/src/solr-7.7.2.tgz" ]; then
+if [ ! -f "usr/src/solr-7.7.3.tgz" ]; then
     mkdir usr
     mkdir usr/src
     echo "Downloading Solr"
-    wget -P usr/src/ https://www-eu.apache.org/dist/lucene/solr/7.7.2/solr-7.7.2.tgz
+    wget -P usr/src/ https://www-eu.apache.org/dist/lucene/solr/7.7.3/solr-7.7.3.tgz
 fi
 
 mkdir ${BUILDDIR}
