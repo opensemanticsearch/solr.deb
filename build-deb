@@ -11,7 +11,7 @@ if [ ! -f "usr/src/solr-7.7.3.tgz" ]; then
     mkdir usr
     mkdir usr/src
     echo "Downloading Solr"
-    wget -P usr/src/ https://www-eu.apache.org/dist/lucene/solr/7.7.3/solr-7.7.3.tgz
+    wget -P usr/src/ https://archive.apache.org/dist/lucene/solr/7.7.3/solr-7.7.3.tgz
 fi
 
 mkdir ${BUILDDIR}
