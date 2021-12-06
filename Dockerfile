@@ -8,4 +8,6 @@ COPY --chown=solr:solr ./var/solr/data/opensemanticsearch /var/solr/data/opensem
 
 COPY --chown=solr:solr ./src/open-semantic-entity-search-api/src/solr/opensemanticsearch-entities /var/solr/data/opensemanticsearch-entities
 
+COPY etc /etc
+
 USER solr
