@@ -8,6 +8,8 @@ COPY --chown=solr:solr ./var/solr/data/opensemanticsearch /var/solr/data/opensem
 
 COPY --chown=solr:solr ./src/open-semantic-entity-search-api/src/solr/opensemanticsearch-entities /var/solr/data/opensemanticsearch-entities
 
+COPY etc /etc
+
 # Recreate symbolic links for hunspell (required for windows compatibility)
 RUN rm /opt/solr/server/solr/opensemanticsearch/conf/lang/hunspell
 RUN rm /opt/solr/server/solr/opensemanticsearch-entities/conf/lang/hunspell
