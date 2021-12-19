@@ -33,9 +33,6 @@ then
 
     echo "Overwriting standard Solr configs with custom configs"
 
-    echo "Setting host to localhost only, so you can access this Solr and the text of all data only from this machine"
-    mv /etc/solr/jetty-http.xml /opt/solr/server/etc/
-
     echo "Removing Solr installation script and archive"
     rm /usr/src/${SOLR_ARCHIVED_DIRNAME}.tgz
     rm ${TEMPDIR}/${SOLR_ARCHIVED_DIRNAME}/bin/install_solr_service.sh
