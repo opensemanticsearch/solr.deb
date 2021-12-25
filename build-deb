@@ -4,14 +4,17 @@ VERSION=`date +%y.%m.%d`
 PACKAGE=solr.deb_${VERSION}.deb
 BUILDDIR=/tmp/solr-$$.deb
 
+# read $SOLR_VERSION and $SOLR_URL from config file solr-version.env
+source solr-version.env
+
 echo "Building ${PACKAGE} in temp directory ${BUILDDIR}"
 
 # if not yet there, download Solr binary release
-if [ ! -f "usr/src/solr-7.7.3.tgz" ]; then
+if [ ! -f "usr/src/solr-$SOLR_VERSION.tgz" ]; then
     mkdir usr
     mkdir usr/src
     echo "Downloading Solr"
-    wget -P usr/src/ https://archive.apache.org/dist/lucene/solr/7.7.3/solr-7.7.3.tgz
+    wget -P usr/src/ $SOLR_URL
 fi
 
 mkdir ${BUILDDIR}
