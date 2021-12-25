@@ -4,7 +4,7 @@
 
 if ! java -version
 then
-    echo "No Java installed yet. Pleasy try again after Java has been installed (automatically because of dependencies)"
+    echo "No Java installed yet. Please try again after Java has been installed (automatically because of dependencies)"
     exit 1
 fi
 
@@ -14,8 +14,8 @@ mkdir ${TEMPDIR}
 
 SOLR_ARCHIVE=/usr/src/solr-*.tgz
 
-# The archived files are in a versioned path like solr-7.3.0
-# infer this path from the archive filename which is like /downloadpath/solr-7.3.0.tgz by filename without path by basename with parameter for strip the .tgz suffix
+# The archived files are in a versioned path like solr-x.y.z
+# infer this path from the archive filename which is like /downloadpath/solr-x.y.z.tgz by filename without path by basename with parameter for strip the .tgz suffix
 SOLR_ARCHIVED_DIRNAME=`basename ${SOLR_ARCHIVE} .tgz`
 
 # extract only the installer (which uses the archive for installation)
