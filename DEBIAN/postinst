@@ -4,7 +4,7 @@
 
 if ! java -version
 then
-    echo "No Java installed yet. Please try again after Java has been installed (automatically because of dependencies)"
+    echo "No Java installation found. Please try again after Java has been installed (automatically because of package dependencies)"
     exit 1
 fi
 
@@ -29,9 +29,6 @@ if ${TEMPDIR}/${SOLR_ARCHIVED_DIRNAME}/bin/install_solr_service.sh ${SOLR_ARCHIV
 then
 
     # Solr installation seems ok
-    # so we overwrite some config files to our custom config files
-
-    echo "Overwriting standard Solr configs with custom configs"
 
     echo "Removing Solr installation script and archive"
     rm /usr/src/${SOLR_ARCHIVED_DIRNAME}.tgz
