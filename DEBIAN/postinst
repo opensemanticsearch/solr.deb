@@ -37,9 +37,6 @@ then
     rmdir ${TEMPDIR}/${SOLR_ARCHIVED_DIRNAME}
     rmdir ${TEMPDIR}
 
-    echo "Restarting Solr to activate the new configfiles"
-    service solr restart
-
 else
     # If Solr install script ends with error, we do, too
     exit 1
