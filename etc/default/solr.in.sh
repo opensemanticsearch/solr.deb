@@ -169,7 +169,7 @@ SOLR_OPTS="$SOLR_OPTS -Dsolr.autoCommit.maxTime=60000"
 #SOLR_REQUESTLOG_ENABLED=false
 
 # Bind Solr to localhost, so not directly available outside this machine
-SOLR_OPTS="$SOLR_OPTS -Djetty.host=127.0.0.1"
+SOLR_OPTS="$SOLR_OPTS -Djetty.host=${SOLR_LOCAL_HOST:-localhost}"
 
 # Sets the port Solr binds to, default is 8983
 #SOLR_PORT=8983
