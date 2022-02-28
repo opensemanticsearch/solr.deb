@@ -1,0 +1,18 @@
+#!/bin/sh
+
+DIR=${1:-/var/solr}
+
+if [ ! -d "$DIR/data" ]; then
+    echo "Creating $DIR/data"
+    mkdir -m 0770 -p "$DIR/data"
+fi
+
+if [ ! -d "$DIR/data/opensemanticsearch" ]; then
+    cp -a /oss-data/opensemanticsearch "$DIR/data/"
+    ln -sf /usr/share/hunspell /var/solr/data/opensemanticsearch/conf/lang/
+fi
+
+if [ ! -d "$DIR/data/opensemanticsearch-entities" ]; then
+    cp -a /oss-data/opensemanticsearch-entities "$DIR/data/"
+    ln -sf /usr/share/hunspell /var/solr/data/opensemanticsearch-entities/conf/lang/
+fi
